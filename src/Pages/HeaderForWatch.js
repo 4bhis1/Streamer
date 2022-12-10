@@ -5,8 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { token, url } from "../config";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const HeaderForWatch = () => {
   //   const [age, setAge] = React.useState("Movie");
@@ -38,7 +37,7 @@ const HeaderForWatch = () => {
 
   function saveInput(text) {
     fetch(
-      `${url}/search/movie?api_key=${token}&language=en-US&page=1&query=${text}`
+      `${process.env.REACT_APP_MOVIE_DB_URL}/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_TOKEN}&language=en-US&page=1&query=${text}`
     )
       .then((res) => res.json())
       .then((data) => {

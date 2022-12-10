@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import View from "../Components/View";
-import { img, movieUrl, token, url } from "../config";
 import { Link, useHistory, useParams } from "react-router-dom";
 
 import { FaVideo } from "react-icons/fa";
@@ -27,7 +26,7 @@ const MovieWatch = () => {
     //   const MovieReviews = https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
 
     // fetch for movie details
-    fetch(`${url}/movie/${movieId}?api_key=${token}&language=en-US`)
+    fetch(`${process.env.REACT_APP_MOVIE_DB_URL}/movie/${movieId}?api_key=${process.env.REACT_APP_MOVIE_DB_TOKEN}&language=en-US`)
       .then((res) => res.json())
       .then((data) => {
         console.log("details", data);
@@ -36,7 +35,7 @@ const MovieWatch = () => {
 
     // fetch for recommendations
     fetch(
-      `${url}/movie/${movieId}/recommendations?api_key=${token}&language=en-US&page=1`
+      `${process.env.REACT_APP_MOVIE_DB_URL}/movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_MOVIE_DB_TOKEN}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -46,7 +45,7 @@ const MovieWatch = () => {
 
     // fetch for reviews
     fetch(
-      `${url}/movie/${movieId}/reviews?api_key=${token}&language=en-US&page=1`
+      `${process.env.REACT_APP_MOVIE_DB_URL}/movie/${movieId}/reviews?api_key=${process.env.REACT_APP_MOVIE_DB_TOKEN}&language=en-US&page=1`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -55,7 +54,7 @@ const MovieWatch = () => {
       });
 
     // fetch for similar
-    fetch(`${url}/movie/${movieId}/similar?api_key=${token}&language=en-US`)
+    fetch(`${process.env.REACT_APP_MOVIE_DB_URL}/movie/${movieId}/similar?api_key=${process.env.REACT_APP_MOVIE_DB_TOKEN}&language=en-US`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Similar", data.results);
@@ -76,7 +75,7 @@ const MovieWatch = () => {
           id="iframe"
           title="Movie-player"
           allowFullScreen
-          src={`${movieUrl}/movie?id=${movieId}`}
+          src={`${process.env.REACT_APP_MOVIE_STREAM_URL}/movie?id=${movieId}`}
           style={{
             height: "94vh",
             width: "98vw",
@@ -252,7 +251,7 @@ const MovieWatch = () => {
                         }}
                       >
                         <img
-                          src={`${img}${value.poster_path}`}
+                          src={`${process.env.REACT_APP_MOVIE_DB_IMAGE_URL_FOR_POSTER}${value.poster_path}`}
                           height={150}
                           width={100}
                         />

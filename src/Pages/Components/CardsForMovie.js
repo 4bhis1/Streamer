@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Ratings from "../../Components/Ratings";
 import View from "../../Components/View";
-import { img } from "../../config";
 
 const CardsForMovie = ({ value, index }) => {
   const Navigate = useNavigate();
@@ -21,7 +20,7 @@ const CardsForMovie = ({ value, index }) => {
       {/* <Link to={`/movies/${value.id}`}> */}
       <View style={{ flexDirection: "column" }}>
         <img
-          src={`${img}${value.poster_path}`}
+          src={`${process.env.REACT_APP_MOVIE_DB_IMAGE_URL_FOR_POSTER}${value.poster_path}`}
           alt="im"
           height={200}
           width={150}

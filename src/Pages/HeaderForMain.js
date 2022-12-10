@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import View from "../Components/View";
-import { token, url } from "../config";
 
 import "./styles.css";
 
@@ -25,7 +24,7 @@ const HeaderForMain = () => {
 
   function saveInput(text) {
     fetch(
-      `${url}/search/movie?api_key=${token}&language=en-US&page=1&query=${text}`
+      `${process.env.REACT_APP_MOVIE_DB_URL}/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_TOKEN}&language=en-US&page=1&query=${text}`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 import CardsForMovie from "./Components/CardsForMovie";
 import Ratings from "../Components/Ratings";
 import View from "../Components/View";
-import { img, token, url } from "../config";
 import HeaderForMain from "./HeaderForMain";
 
 const Main = () => {
   const [data, updateData] = useState();
-
+  console.log(
+    process.env.REACT_APP_MOVIE_DB_URL,
+    process.env.REACT_APP_MOVIE_DB_TOKEN
+  );
   useEffect(() => {
-    fetch(`${url}/movie/popular?api_key=${token}`)
+    fetch(
+      `${process.env.REACT_APP_MOVIE_DB_URL}/movie/popular?api_key=${process.env.REACT_APP_MOVIE_DB_TOKEN}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log("@@@ data", data.results);
