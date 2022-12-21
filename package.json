@@ -1,5 +1,5 @@
 {
-  "name": "contextapi",
+  "name": "streamer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
